@@ -32,50 +32,17 @@
     <script src="http:////code.jquery.com/jquery-latest.js"></script>
     <script>
       $(document).ready(function($) {
-        $("p").text("The DOM is now loaded and can be manipulated.");
       });
-      $.urlParams = function() {
-        var pairs, kv, result = {};
-        if (document.location.search) {
-          pairs = document.location.search.substring(1).split('&');
-          for (i = 0; i < pairs.length; i++) {
-            pair = pairs[i];
-            kv = pair.split('=');
-            result[kv[0]] = kv[1];
-          }
-          return result;
-        } else {
-          return {};
-        }
-      }
     </script>
   </head>
   <body>
-    <div>
-      <a href="http://github.com/sasquatch">sasquatch</a>
-    </div>
-    <div>
+    <h1>Sasquatch Modern Software Applications, Inc.</h1>
+    <p><a href="http://github.com/sasquatch">sasquatch's github page</a></p>
+    <p><a href="http://sas.quat.ch/">sasquatch's company page</a></p>
+    <p>
       <a href="http://github.com/sasquatch">
       <img id='logo' style="border: 0;" src="https://raw.github.com/sasquatch/sasquatch.github.com/master/images/gravatar.png">
       </a>
-    </div>
-    <script>
-      var params;
-      document.writeln("<table>");
-      document.writeln("<caption>URL parameters</caption>");
-      document.writeln("<tr><th>property</th><th>name</th><th>value</th></tr>");
-      document.writeln("<tr><td>pathname</td><td></td><td>" + document.location.pathname + "</td></tr>");
-      if(document.location.hash) {
-        document.writeln("<tr><td>hash</td><td></td><td>" + document.location.hash + "</td></tr>");
-      }
-      if(document.location.search) {
-        params = $.urlParams();
-        for (var key in params) {
-          document.writeln("<tr><td>search</td><td>" + key + "</td><td>" + params[key] + "</td></tr>");
-
-        }
-      }
-      document.writeln("</table>");
-    </script>
+    </p>
   </body>
 </html>

@@ -1,28 +1,53 @@
 <html>
   <head>
     <title>sasquatch</title>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
     <style type="text/css">
       * {
           margin: 0;
       }
       html {
         height: 100%;
+        background-color: gray;
       }
       body {
-        margin: 2em;
-        background-color: gray;
+        margin: 4em;
+        padding: 4em;
+        background-color: white;
         color: black;
       }
       #logo {
         width: 200px;
         height: 200px;
       }
+      table {
+        margin-top: 1em;
+      }
+      table caption {
+        text-align: left;
+      }
+      table td {
+        padding: 5px;
+      }
     </style>
+    <script src="http:////code.jquery.com/jquery-latest.js"></script>
     <script>
-      $(document).ready(function () {
+      $(document).ready(function($) {
         $("p").text("The DOM is now loaded and can be manipulated.");
       });
+      $.urlParams = function() {
+        var pairs, kv, result = {};
+        if (document.location.search) {
+          pairs = document.location.search.substring(1).split('&');
+          for (i = 0; i < pairs.length; i++) {
+            pair = pairs[i];
+            kv = pair.split('=');
+            result[kv[0]] = kv[1];
+          }
+          return result;
+        } else {
+          return {};
+        }
+      }
     </script>
   </head>
   <body>
@@ -34,5 +59,23 @@
       <img id='logo' style="border: 0;" src="https://raw.github.com/sasquatch/sasquatch.github.com/master/images/gravatar.png">
       </a>
     </div>
+    <script>
+      var params;
+      document.writeln("<table>");
+      document.writeln("<caption>URL parameters</caption>");
+      document.writeln("<tr><th>property</th><th>name</th><th>value</th></tr>");
+      document.writeln("<tr><td>pathname</td><td></td><td>" + document.location.pathname + "</td></tr>");
+      if(document.location.hash) {
+        document.writeln("<tr><td>hash</td><td></td><td>" + document.location.hash + "</td></tr>");
+      }
+      if(document.location.search) {
+        params = $.urlParams();
+        for (var key in params) {
+          document.writeln("<tr><td>search</td><td>" + key + "</td><td>" + params[key] + "</td></tr>");
+
+        }
+      }
+      document.writeln("</table>");
+    </script>
   </body>
 </html>
